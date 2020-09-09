@@ -1,4 +1,4 @@
-import pyautogui, time, threading
+import pyautogui, time, threading 
 from tkinter import *
 
 root = Tk()
@@ -7,7 +7,7 @@ root = Tk()
 class Application():
 
     stop_threads = False
-
+    
     def __init__(self):
         self.root = root
         self.tela()
@@ -27,15 +27,15 @@ class Application():
 
     def buttons(self):
         #Bottão Clear 
-        self.btnClear = Button(self.frame, text = 'F9- Clear', command = self.clear)
+        self.btnClear = Button(self.frame, text = 'Clear', command = self.clear)
         self.btnClear.place ( relx = 0.76, rely = 0.1, width = 100, height = 50)
         #self.btnClear.bind('<Key>',print('teste')
         #Bottão Start 
-        self.btnStart = Button(self.frame, text = 'F10- Start', command = self.start)
+        self.btnStart = Button(self.frame, text = 'F9- Start', command = self.start)
         self.btnStart.place ( relx = 0.76, rely = 0.39, width = 100, height = 50)
         
         #Bottão Stop 
-        self.btnStop = Button(self.frame, text = 'F11- Stop', command = self.stop)
+        self.btnStop = Button(self.frame, text = 'F10- Stop', command = self.stop)
         self.btnStop.place ( relx = 0.76, rely = 0.68, width = 100, height = 50)
     
     def inputs(self):
@@ -58,9 +58,9 @@ class Application():
         
         splitStringTextBox = stringTextBox.splitlines()
 
-        time.sleep(5.0)
+        time.sleep(3.0)
         
-
+        
         for word in splitStringTextBox:
             time.sleep(1.0)
             
@@ -74,7 +74,14 @@ class Application():
     def stop(self):
         self.stop_threads = True
 
-    def key(event):
-        print(event.char)
+    def keyPressed(event):
+        if event.keysym == 'F9':
+            print('F9')
+        
+        elif  event.keysym == 'F10':
+            print('F10')
+
+    
+    root.bind("<Key>", keyPressed)
 
 Application()

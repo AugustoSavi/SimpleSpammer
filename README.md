@@ -19,7 +19,6 @@ $ python main.py
 ```
 ## :information_source: Atenção :information_source:
 
-Esse Script pega cada linha do arquivo "file.txt" coloca no seu "ctrl+V" e clica em "Enter",
-Só joga o que você quer que seja spamado no file.txt e seja um Spammer Feliz.
+Esse Script pega cada linha do que foi inserido na caixa de texto e clica em "Enter".
 
 Esse projeto ainda esta em desevolvimento, não tem muitas features mas já pode ser usado por você
