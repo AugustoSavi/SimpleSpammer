@@ -5,6 +5,9 @@ root = Tk()
 
 
 class Application():
+
+    stop_threads = False
+
     def __init__(self):
         self.root = root
         self.tela()
@@ -27,14 +30,12 @@ class Application():
         self.btnClear = Button(self.frame, text = 'F9- Clear', command = self.clear)
         self.btnClear.place ( relx = 0.76, rely = 0.1, width = 100, height = 50)
         #self.btnClear.bind('<Key>',print('teste')
-
-        
         #Bottão Start 
         self.btnStart = Button(self.frame, text = 'F10- Start', command = self.start)
         self.btnStart.place ( relx = 0.76, rely = 0.39, width = 100, height = 50)
         
         #Bottão Stop 
-        self.btnStop = Button(self.frame, text = 'F11- Stop')
+        self.btnStop = Button(self.frame, text = 'F11- Stop', command = self.stop)
         self.btnStop.place ( relx = 0.76, rely = 0.68, width = 100, height = 50)
     
     def inputs(self):
@@ -49,8 +50,8 @@ class Application():
         self.textBox.delete('1.0', END)
          
     def start(self):
-        startThreading = threading.Thread(target=self.SpamLoop)
-        startThreading.start()
+        self.startThreading = threading.Thread(target=self.SpamLoop)
+        self.startThreading.start()
         
     def SpamLoop(self):
         stringTextBox = self.textBox.get('1.0', END)
@@ -59,13 +60,21 @@ class Application():
 
         time.sleep(5.0)
         
+
         for word in splitStringTextBox:
-            time.sleep(2.0)
+            time.sleep(1.0)
+            
+            global stop_threads
+            if self.stop_threads: 
+                break
+            
             pyautogui.typewrite(word)
             pyautogui.press('enter')
+
+    def stop(self):
+        self.stop_threads = True
 
     def key(event):
         print(event.char)
 
 Application()
-#f = open("file.txt",'r') 
