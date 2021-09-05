@@ -1,5 +1,7 @@
-# SimpleSpammer
+# Simple Spammer
     
+![image](https://user-images.githubusercontent.com/32443720/132144521-d124b87d-7d85-4acb-bbe6-84e33b271af4.png)
+
 ## :information_source:  Tecnologias Usadas
 
 * Python
